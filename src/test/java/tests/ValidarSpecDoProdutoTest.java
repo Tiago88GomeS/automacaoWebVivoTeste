@@ -7,6 +7,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
+import pages.HomePage;
 
 public class ValidarSpecDoProdutoTest {
     WebDriver driver;
@@ -16,16 +17,20 @@ public class ValidarSpecDoProdutoTest {
     public TestName test = new TestName();
 
     @Before
-    public void setUp() {
+    public void setUp() throws InterruptedException {
         webDriver = new Driver("chrome");
         driver = webDriver.getDriver();
         driver.manage().window().maximize();
         driver.get("https://advantageonlineshopping.com");
+        Thread.sleep(5000);
     }
 
     @Test
-    public void testQueroValidarEspecificacaoDoProduto(){
-
+    public void testQueroValidarEspecificacaoDoProduto() throws InterruptedException {
+        new HomePage(driver)
+                .clicarEmSpecialOffer()
+                .clicarNoBotaoSeeOffer()
+                .entaoValidoEspicificacaoDoProduto();
     }
     @After
     public void tearDown() {
