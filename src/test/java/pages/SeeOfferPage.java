@@ -8,10 +8,10 @@ public class SeeOfferPage extends BasePage {
         super(driver);
     }
 
-    public PageProductOffer clicarNoBotaoSeeOffer() throws InterruptedException {
+    public ProductOfferPage clicarNoBotaoSeeOffer() throws InterruptedException {
         Thread.sleep(2000);
         driver.findElement(By.id("see_offer_btn")).click();
-        return new PageProductOffer(driver);
+        return new ProductOfferPage(driver);
     }
 }
 

@@ -32,6 +32,32 @@ public class ValidarSpecDoProdutoTest {
                 .clicarNoBotaoSeeOffer()
                 .entaoValidoEspicificacaoDoProduto();
     }
+
+    @Test
+    public void testParaValidarAlteracaoDeCorDoProdutoNoCarrinho() throws InterruptedException {
+        new HomePage(driver)
+                .clicarEmSpecialOffer()
+                .clicarNoBotaoSeeOffer()
+                .entaoValidoEspicificacaoDoProduto()
+                .eEscolhoACorBlackParaOProduto()
+                .eClicoNoBotaoAddToCart()
+                .entaoClicoParaIrAoCheckout()
+                .validoProdutoNaCorBlack();
+    }
+
+    @Test
+    public void testParaValidarPaginaDeCheckOut() throws InterruptedException {
+        new HomePage(driver)
+                .clicarEmSpecialOffer()
+                .clicarNoBotaoSeeOffer()
+                .entaoValidoEspicificacaoDoProduto()
+                .eEscolhoACorBlackParaOProduto()
+                .alteroAQuantidadeDeProdutos()
+                .eClicoNoBotaoAddToCart()
+                .entaoClicoParaIrAoCheckout()
+                .validoProdutoNaCorBlack()
+                .validoValorNaCompraDeDoisProdutos();
+    }
     @After
     public void tearDown() {
         driver.close();
