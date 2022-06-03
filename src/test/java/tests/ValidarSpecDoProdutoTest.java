@@ -58,6 +58,19 @@ public class ValidarSpecDoProdutoTest {
                 .validoProdutoNaCorBlack()
                 .validoValorNaCompraDeDoisProdutos();
     }
+
+    @Test
+    public void testRemoverOsProdutosDoCarrinho() throws InterruptedException {
+        new HomePage(driver)
+                .clicarEmSpecialOffer()
+                .clicarNoBotaoSeeOffer()
+                .entaoValidoEspicificacaoDoProduto()
+                .eEscolhoACorBlackParaOProduto()
+                .alteroAQuantidadeDeProdutos()
+                .eClicoNoBotaoAddToCart()
+                .clicoParaRemoverOsProdutosDoCarrinho()
+                .validoCarrinhoVazio();
+    }
     @After
     public void tearDown() {
         driver.close();

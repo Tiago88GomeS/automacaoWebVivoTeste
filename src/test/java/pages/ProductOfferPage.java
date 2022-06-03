@@ -32,6 +32,20 @@ public class ProductOfferPage extends BasePage {
        return this;
     }
 
+    public ProductOfferPage clicoParaRemoverOsProdutosDoCarrinho(){
+        driver.findElement(By.xpath("//div[contains(@class,'removeProduct iconCss')]")).click();
+        return this;
+    }
+
+    public ProductOfferPage validoCarrinhoVazio(){
+        driver.findElement(By.id("shoppingCartLink")).click();
+        String textoObtidoCarrinhoVario = "Your shopping cart is empty";
+        String valorCarrinhoVazio = driver.findElement(By.xpath("//label[@class='roboto-bold ng-scope']")).getText();
+        Assert.assertEquals(textoObtidoCarrinhoVario, valorCarrinhoVazio);
+        System.out.println("------- Carrinho Está Vazio! ------");
+        return this;
+    }
+
     public CheckOutPage entaoClicoParaIrAoCheckout() throws InterruptedException {
         driver.findElement(By.id("checkOutPopUp")).click();
         return new CheckOutPage(driver);
