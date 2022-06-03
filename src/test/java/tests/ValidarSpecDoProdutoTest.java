@@ -1,5 +1,7 @@
 package tests;
 
+import evidencia.Generator;
+import evidencia.Screenshot;
 import executaDriver.Driver;
 import org.junit.After;
 import org.junit.Before;
@@ -8,6 +10,8 @@ import org.junit.Test;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import pages.HomePage;
+
+import java.io.IOException;
 
 public class ValidarSpecDoProdutoTest {
     WebDriver driver;
@@ -26,15 +30,18 @@ public class ValidarSpecDoProdutoTest {
     }
 
     @Test
-    public void testQueroValidarEspecificacaoDoProduto() throws InterruptedException {
+    public void testQueroValidarEspecificacaoDoProduto() throws InterruptedException, IOException {
         new HomePage(driver)
                 .clicarEmSpecialOffer()
                 .clicarNoBotaoSeeOffer()
                 .entaoValidoEspicificacaoDoProduto();
+
+        Screenshot.takeScreenshot(driver,"C:\\Users\\user\\test-report\\ " +
+                Generator.geracaoDataHoraParaArquivo() + test.getMethodName() + ".png");
     }
 
     @Test
-    public void testParaValidarAlteracaoDeCorDoProdutoNoCarrinho() throws InterruptedException {
+    public void testParaValidarAlteracaoDeCorDoProdutoNoCarrinho() throws InterruptedException, IOException {
         new HomePage(driver)
                 .clicarEmSpecialOffer()
                 .clicarNoBotaoSeeOffer()
@@ -43,10 +50,13 @@ public class ValidarSpecDoProdutoTest {
                 .eClicoNoBotaoAddToCart()
                 .entaoClicoParaIrAoCheckout()
                 .validoProdutoNaCorBlack();
+
+        Screenshot.takeScreenshot(driver,"C:\\Users\\user\\test-report\\ " +
+                Generator.geracaoDataHoraParaArquivo() + test.getMethodName() + ".png");
     }
 
     @Test
-    public void testParaValidarPaginaDeCheckOut() throws InterruptedException {
+    public void testParaValidarPaginaDeCheckOut() throws InterruptedException, IOException {
         new HomePage(driver)
                 .clicarEmSpecialOffer()
                 .clicarNoBotaoSeeOffer()
@@ -57,10 +67,13 @@ public class ValidarSpecDoProdutoTest {
                 .entaoClicoParaIrAoCheckout()
                 .validoProdutoNaCorBlack()
                 .validoValorNaCompraDeDoisProdutos();
+
+        Screenshot.takeScreenshot(driver,"C:\\Users\\user\\test-report\\ " +
+                Generator.geracaoDataHoraParaArquivo() + test.getMethodName() + ".png");
     }
 
     @Test
-    public void testRemoverOsProdutosDoCarrinho() throws InterruptedException {
+    public void testRemoverOsProdutosDoCarrinho() throws InterruptedException, IOException {
         new HomePage(driver)
                 .clicarEmSpecialOffer()
                 .clicarNoBotaoSeeOffer()
@@ -70,6 +83,9 @@ public class ValidarSpecDoProdutoTest {
                 .eClicoNoBotaoAddToCart()
                 .clicoParaRemoverOsProdutosDoCarrinho()
                 .validoCarrinhoVazio();
+
+        Screenshot.takeScreenshot(driver,"C:\\Users\\user\\test-report\\ " +
+                Generator.geracaoDataHoraParaArquivo() + test.getMethodName() + ".png");
     }
     @After
     public void tearDown() {
